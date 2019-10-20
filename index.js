@@ -2,7 +2,7 @@ const server = require('./api/server.js');
 
 const dbPort = process.env.DB_PORT;
 
-server.use(express.json());
+require('dotenv').config();
 
 const PORT = process.env.PORT || dbPort || 4000;
 
