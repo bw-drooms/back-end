@@ -3,7 +3,9 @@ const db = require('../../data/dbConfig.js');
 module.exports = {
     create,
     get,
-    getById    
+    getById,
+    update,
+    remove,
 }
 
 function create(jobseeker) {
@@ -24,3 +26,16 @@ function getById(id) {
       .where({ id })
       .first();
   }
+
+function update(id, changes) {
+    return db('jobseeker')
+      .where({ id })
+      .update(changes)
+      .then(ids => ({ id: ids[0], changes}));
+  }
+
+function remove(id) {
+  return db('jobseeker')
+    .where({ id })
+    .delete()
+}

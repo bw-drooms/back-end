@@ -21,4 +21,18 @@ router.post('/', (req, res) => {
     })
 })
 
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    Jobseekers.update(id, req.body).then(newRecord => {
+        res.status(200).json(newRecord)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+    Jobseekers.remove(id).then(deleted => {
+        res.status(200).json({ deleted: `member of id ${id}`})
+    })
+})
+
 module.exports = router;
