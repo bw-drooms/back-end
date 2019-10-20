@@ -11,7 +11,7 @@ exports.up = function(knex) {
         .notNullable()
       tbl.string('description')
         .notNullable()
-      tbl.number('pay_range')
+      tbl.integer('pay_range')
       tbl.boolean('selected')
         .defaultTo(false)
         .notNullable()
