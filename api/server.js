@@ -5,10 +5,10 @@ const helmet = require('helmet');
 const seekerRouter = require('./jobseeker/jobseeker-router.js');
 const companyRouter = require('./company/company-router.js');
 
-server.use(express.json());
+
 server.use(cors());
 server.use(helmet());
-
+server.use(express.json());
 server.use('/api/jobseekers', seekerRouter)
 server.use('/api/jobs', companyRouter)
 
