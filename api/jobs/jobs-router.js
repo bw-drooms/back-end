@@ -14,11 +14,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Jobs.create(req.body).then(job => {
-        res.status(201).json(job)
-    })
-    .catch(err => {
-        res.status(400).json(err)
+    Jobs.create(req.body)
+        .then(job => {
+            res.status(201).json(job)
     })
 })
 
