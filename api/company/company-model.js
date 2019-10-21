@@ -16,10 +16,14 @@ function create(job) {
       });
   }
 
-
-function getJobs() {
-    return db('company')
+//returns jobs all jobs available at all companies
+  function getJobs() {
+    return db('company as job')
+      .join('company_profile as company')
+      .join('profile_jobs as pj')
+      .select('company_name', 'location', 'position', 'pay_range', 'selected')
 }
+
 
 function getById(id) {
     return db('company')
