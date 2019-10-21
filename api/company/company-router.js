@@ -3,6 +3,13 @@ const router = express.Router();
 
 const Companies = require('./company-model');
 
+router.post('/', (req, res) => {
+    Companies.create(req.body)
+        .then(job => {
+            res.status(201).json(job)
+    })
+})
+
 router.get('/', (req, res) => {
     Companies.get().then(companies => {
         res.status(200).json(companies)
