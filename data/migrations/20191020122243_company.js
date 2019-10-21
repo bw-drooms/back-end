@@ -13,8 +13,13 @@ exports.up = function(knex) {
       tbl.boolean('selected')
         .defaultTo(false)
         .notNullable()
-
-
+      tbl.integer('company_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('company_profile')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
   })
 };
 
