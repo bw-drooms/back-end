@@ -9,12 +9,9 @@ module.exports = {
 }
 
 function create(job) {
-    return db('company')
-      .insert(job)
-      .then(ids => {
-        return getById(ids[0]);
-      });
-  }
+  return db('company')//jobs + company = jobs at companies
+    .insert(job)
+}
 
 //returns jobs all jobs available at all companies
   function getJobs() {
@@ -33,7 +30,7 @@ function getById(id) {
     return db('company')
       .where({ id })
       .update(changes)
-      .then(ids => ({ id: ids[0], changes}));
+      // .then(ids => ({ id: ids[0], changes}));
   }
 
   function remove(id) {
