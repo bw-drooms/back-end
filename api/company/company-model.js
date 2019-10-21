@@ -2,40 +2,24 @@ const db = require('../../data/dbConfig.js');
 
 module.exports = {
     create,
-    getJobs,
-    getById,
-    update,
-    remove
+    get,
+    getJobsById,
+    // getById,
+    // update,
+    // remove
 }
 
-function create(job) {
-    return db('company')
-      .insert(job)
-      .then(ids => {
-        return getById(ids[0]);
-      });
-  }
-
-
-function getJobs() {
-    return db('company')
+function create(company) {
+    return db('company_profile')
+        .insert(company)
 }
 
-function getById(id) {
-    return db('company')
-      .where({ id })
-      .first();
-  }
+function get() {
+    return db('company_profile')
+}
 
-  function update(id, changes) {
-    return db('company')
-      .where({ id })
-      .update(changes)
-      .then(ids => ({ id: ids[0], changes}));
-  }
-
-  function remove(id) {
-    return db('company')
-      .where({ id })
-      .delete()
-  }
+function getJobsById(company_id) {
+     return db('company as jobs')
+        .join('company_profile as company', 'company.id', 'jobs.company_id', )
+        .where('jobs.company_id', '=', company_id)
+}

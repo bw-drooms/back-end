@@ -3,8 +3,6 @@ exports.up = function(knex) {
   return knex.schema.createTable('company', tbl => {
       tbl.increments()
       tbl.timestamp('created_at')
-      tbl.string('company_name')
-        .notNullable()
       tbl.string('location')
         .notNullable()
       tbl.string('position')
@@ -15,8 +13,13 @@ exports.up = function(knex) {
       tbl.boolean('selected')
         .defaultTo(false)
         .notNullable()
-
-
+      tbl.integer('company_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('company_profile')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
   })
 };
 
