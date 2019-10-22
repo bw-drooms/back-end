@@ -1,5 +1,55 @@
 [
   {
+    "type": "post",
+    "url": "/register",
+    "title": "Post User Registration",
+    "name": "PostUser",
+    "group": "Authentication",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>The username of the new user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>The password of the new user</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "201": [
+          {
+            "group": "201",
+            "type": "Object",
+            "optional": false,
+            "field": "message",
+            "description": "<p>welcome message with token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 OK\n{\n \n \"message\": \"Welcome Paul!\",\n \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./api/users/user-router.js",
+    "groupTitle": "Authentication"
+  },
+  {
     "success": {
       "fields": {
         "Success 200": [
@@ -22,9 +72,9 @@
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "./apidoc/main.js",
-    "group": "C__Users_User_Documents_Lambda_build_weeks_back_end_apidoc_main_js",
-    "groupTitle": "C__Users_User_Documents_Lambda_build_weeks_back_end_apidoc_main_js",
+    "filename": "./docs/main.js",
+    "group": "C__Users_User_Documents_Lambda_build_weeks_back_end_docs_main_js",
+    "groupTitle": "C__Users_User_Documents_Lambda_build_weeks_back_end_docs_main_js",
     "name": ""
   },
   {
