@@ -27,10 +27,10 @@ function getById(id) {
   }
 
   function update(id, changes) {
-    return db('company')
+    return db('jobseeker')
       .where({ id })
       .update(changes)
-      // .then(ids => ({ id: ids[0], changes}));
+      .then(ids => ({ id: ids[0], changes}));
   }
 
   function remove(id) {

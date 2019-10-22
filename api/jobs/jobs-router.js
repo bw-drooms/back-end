@@ -32,10 +32,21 @@ router.post('/', (req, res) => {
     })
 })
 
+/**
+*@api {put} /api/jobs/:job_id
+*@apiName PutJobs
+*@apiGroup Jobs
+*@apiParam {Number} id job's unique ID.
+**/
+
 router.put('/:id', (req, res) => {
     const id = req.params.id;
-    Jobs.update(id, req.body).then(newRecord => {
+    const changes = req.body;
+    Jobs.update(id, changes).then(newRecord => {
         res.status(200).json(newRecord)
+    })
+    .catch(err => {
+        res.status(400).json(err)
     })
 })
 
