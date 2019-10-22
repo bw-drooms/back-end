@@ -47,7 +47,12 @@ router.get('/:company_id', (req, res) => {
         res.status(400).json(err)
     })
 })
-
+/**
+*@api {get} /companies/:company_id/jobs/:job_id
+*@apiName GetCompaniesJobsApplicants
+*@apiGroup Companies
+* @apiParam {Number} id job's unique ID.
+**/
 router.get('/:company_id/jobs/:job_id', (req, res) => {
     const id = req.params.job_id;
     Companies.getJobseekersByJobID(id).then(job => {

@@ -79,7 +79,7 @@
   },
   {
     "type": "delete",
-    "url": "/api/companies/:company_id",
+    "url": "/companies/:company_id",
     "title": "",
     "name": "DeleteCompanies",
     "group": "Companies",
@@ -89,7 +89,7 @@
   },
   {
     "type": "get",
-    "url": "/api/companies",
+    "url": "/companies",
     "title": "",
     "name": "GetCompanies",
     "group": "Companies",
@@ -99,7 +99,7 @@
   },
   {
     "type": "get",
-    "url": "/api/companies/:company_id",
+    "url": "/companies/:company_id",
     "title": "",
     "name": "GetCompaniesJobs",
     "group": "Companies",
@@ -121,8 +121,31 @@
     "groupTitle": "Companies"
   },
   {
+    "type": "get",
+    "url": "/companies/:company_id/jobs/:job_id",
+    "title": "",
+    "name": "GetCompaniesJobsApplicants",
+    "group": "Companies",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>job's unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./api/company/company-router.js",
+    "groupTitle": "Companies"
+  },
+  {
     "type": "post",
-    "url": "/api/companies",
+    "url": "/companies",
     "title": "",
     "name": "PostCompanies",
     "group": "Companies",
@@ -132,7 +155,7 @@
   },
   {
     "type": "put",
-    "url": "/api/companies/:company_id",
+    "url": "/companies/:company_id",
     "title": "",
     "name": "PutCompanies",
     "group": "Companies",
@@ -154,6 +177,16 @@
     "groupTitle": "Companies"
   },
   {
+    "type": "delete",
+    "url": "/api/jobs/:job_id",
+    "title": "",
+    "name": "DeleteJobs",
+    "group": "Jobs",
+    "version": "0.0.0",
+    "filename": "./api/jobs/jobs-router.js",
+    "groupTitle": "Jobs"
+  },
+  {
     "type": "get",
     "url": "/api/jobs",
     "title": "",
@@ -169,6 +202,29 @@
     "title": "",
     "name": "PostJobs",
     "group": "Jobs",
+    "version": "0.0.0",
+    "filename": "./api/jobs/jobs-router.js",
+    "groupTitle": "Jobs"
+  },
+  {
+    "type": "put",
+    "url": "/api/jobs/:job_id",
+    "title": "",
+    "name": "PutJobs",
+    "group": "Jobs",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>job's unique ID.</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
     "filename": "./api/jobs/jobs-router.js",
     "groupTitle": "Jobs"
