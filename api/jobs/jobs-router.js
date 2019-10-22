@@ -3,6 +3,12 @@ const router = express.Router();
 
 const Jobs = require('./jobs-model.js');
 
+/**
+*@api {get} /api/jobs
+*@apiName GetJobs
+*@apiGroup Jobs
+**/
+
 router.get('/', (req, res) => {
     Jobs.getJobs()
         .then(jobs => {
@@ -12,6 +18,12 @@ router.get('/', (req, res) => {
             res.status(400).json(err)
         })
 })
+
+/**
+*@api {post} /api/jobs
+*@apiName PostJobs
+*@apiGroup Jobs
+**/
 
 router.post('/', (req, res) => {
     Jobs.create(req.body)

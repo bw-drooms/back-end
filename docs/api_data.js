@@ -154,6 +154,26 @@ define({ "api": [
     "groupTitle": "Companies"
   },
   {
+    "type": "get",
+    "url": "/api/jobs",
+    "title": "",
+    "name": "GetJobs",
+    "group": "Jobs",
+    "version": "0.0.0",
+    "filename": "./api/jobs/jobs-router.js",
+    "groupTitle": "Jobs"
+  },
+  {
+    "type": "post",
+    "url": "/api/jobs",
+    "title": "",
+    "name": "PostJobs",
+    "group": "Jobs",
+    "version": "0.0.0",
+    "filename": "./api/jobs/jobs-router.js",
+    "groupTitle": "Jobs"
+  },
+  {
     "type": "delete",
     "url": "/api/jobseekers/:jobseeker_id",
     "title": "",
