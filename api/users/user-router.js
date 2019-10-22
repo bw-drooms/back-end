@@ -20,8 +20,8 @@ const Users = require('./user-model.js');
  *@apiSuccessExample Success-Response:
  * HTTP/1.1 201 OK
  * {
- *  
- *  "message": "Welcome Paul!",
+ *  "id": 1
+ *  "user": Paul,
  *  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
  * }
  * 
@@ -54,7 +54,8 @@ router.post('/login', (req, res) => {
         console.log(decoded)
 
         res.status(200).json({
-          message: `Welcome ${user.username}!`,
+          id: user.id,
+          user: user.username,
           token:token
         });
       } else {
