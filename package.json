@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/bw-drooms/back-end#readme",
   "dependencies": {
+    "apidoc": "^0.17.7",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -33,5 +34,12 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"
+  },
+  "apidoc": {
+    "name": "Droom Endpoints",
+    "version": "0.1.0",
+    "description": "Droom api docs",
+    "title": "Droom API",
+    "url" : "https://droom6.herokuapp.com/api"
   }
 }
