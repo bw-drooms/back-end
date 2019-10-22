@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Jobs = require('./jobs-model.js');
+const Companies = require('../company/company-model.js');
 
 /**
 *@api {get} /api/jobs
@@ -17,6 +18,14 @@ router.get('/', (req, res) => {
         .catch(err => {
             res.status(400).json(err)
         })
+})
+
+router.get('/:company_id', (req, res) => {
+    const id = req.params.company_id;
+    console.log(id)
+    Companies.getJobsById(id).then(company => {
+        res.status(200).json(company)
+    })
 })
 
 /**
