@@ -16,6 +16,7 @@ server.use('/api', usersRouter)
 server.use('/api/jobseekers', restricted, seekerRouter)
 server.use('/api/jobs', jobsRouter)
 server.use('/api/companies', restricted, companiesRouter)
+server.use('/api/docs', express.static('./docs'))
 
 server.get('/', () => {
     console.log('welcome to droom')
