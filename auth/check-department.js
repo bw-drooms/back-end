@@ -1,10 +1,10 @@
-module.exports = department => {
+module.exports = role => {
     return (req, res, next) => {
 
-      if (department === req.user.department) {
+      if (role === req.user.role) {
         next();
       } else {
-        res.status(403).json({ you: "can't touch this" });
+        res.status(403).json({ you: "are not authorized" });
       }
     };
   };
