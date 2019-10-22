@@ -49,7 +49,11 @@ router.put('/:id', (req, res) => {
         res.status(400).json(err)
     })
 })
-
+/**
+*@api {delete} /api/jobs/:job_id
+*@apiName DeleteJobs
+*@apiGroup Jobs
+**/
 router.delete('/:id', (req, res) => {
     const id = req.params.id
     Jobs.remove(id).then(deleted => {
