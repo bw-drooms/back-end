@@ -5,7 +5,7 @@ module.exports = {
     get,
     getJobsById,
     update,
-    // getById,
+    getById,
 
     // remove
 }
@@ -18,6 +18,13 @@ function create(company) {
 function get() {
     return db('company_profile')
 }
+
+function getById(id) {
+    return db('company_profile')
+      .where({ id })
+      .first();
+  }
+
 //get jobs by company id
 function getJobsById(company_id) {
      return db('company as jobs')
