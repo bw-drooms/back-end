@@ -4,6 +4,7 @@ module.exports = {
     create,
     get,
     getJobsById,
+    getJobseekersByJobID,
     update,
     getById,
 
@@ -24,6 +25,12 @@ function getById(id) {
       .where({ id })
       .first();
   }
+
+function getJobseekersByJobID(id) {
+    return db('job_comp')
+        .join('jobseeker as j', 'j.id', '=', 'job_comp.jobseeker_id')
+        .where('company_id', '=', id)
+}
 
 //get jobs by company id
 function getJobsById(company_id) {

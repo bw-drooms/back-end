@@ -13,7 +13,6 @@ exports.up = function(knex) {
         .references('id')
         .inTable('jobseeker')
         .unsigned()
-        .unique()
         .notNullable()
         .onUpdate('CASCADE')
         .onDelete('CASCADE')

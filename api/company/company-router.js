@@ -4,7 +4,7 @@ const router = express.Router();
 const Companies = require('./company-model');
 
 /**
-*@api {post} /api/companies
+*@api {post} /companies
 *@apiName PostCompanies
 *@apiGroup Companies
 **/
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 })
 
 /**
-*@api {get} /api/companies
+*@api {get} /companies
 *@apiName GetCompanies
 *@apiGroup Companies
 **/
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 })
 
 /**
-*@api {get} /api/companies/:company_id
+*@api {get} /companies/:company_id
 *@apiName GetCompaniesJobs
 *@apiGroup Companies
 * @apiParam {Number} id company's unique ID.
@@ -47,9 +47,21 @@ router.get('/:company_id', (req, res) => {
         res.status(400).json(err)
     })
 })
+/**
+*@api {get} /companies/:company_id/jobs/:job_id
+*@apiName GetCompaniesJobsApplicants
+*@apiGroup Companies
+* @apiParam {Number} id job's unique ID.
+**/
+router.get('/:company_id/jobs/:job_id', (req, res) => {
+    const id = req.params.job_id;
+    Companies.getJobseekersByJobID(id).then(job => {
+        res.status(200).json(job)
+    })
+})
 
 /**
-*@api {put} /api/companies/:company_id
+*@api {put} /companies/:company_id
 *@apiName PutCompanies
 *@apiGroup Companies
 *@apiParam {Number} id company's unique ID.
@@ -67,7 +79,7 @@ router.put('/:id', (req, res) => {
 })
 
 /**
-*@api {delete} /api/companies/:company_id
+*@api {delete} /companies/:company_id
 *@apiName DeleteCompanies
 *@apiGroup Companies
 **/
