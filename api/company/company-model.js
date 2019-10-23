@@ -7,8 +7,7 @@ module.exports = {
     getJobseekersByJobID,
     update,
     getById,
-
-    // remove
+    remove
 }
 
 function create(company) {
@@ -45,3 +44,9 @@ function update(id, changes) {
       .update(changes)
       .then(ids => ({ id: ids[0], changes}));
   }
+
+function remove(id) {
+    return db('company_profile')
+    .delete()
+    .where({ id })
+}
