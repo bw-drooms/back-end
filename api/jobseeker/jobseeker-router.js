@@ -35,6 +35,16 @@ router.get('/', checkRole("company"), async (req, res) => {
     else res.status(200).json(jobseekers)
 })
 
+router.get('/:jobseeker_id', async (req, res) => {
+
+    const [err, jobseeker] = await withCatch(Jobseekers.getById(req.params.jobseeker_id))
+        
+        if (err) res.status(500).json(err)
+        else if (err || isEmptyObj(jobseeker)) res.status(404).json({ error: "There is no jobseeker by this id"})
+        else res.status(200).json(jobseeker)
+
+})
+
 /**
 *@api {put} /jobseekers/:jobseeker_id
 *@apiName PutJobseekers
