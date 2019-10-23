@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
    const [err, jobseekers] = await withCatch (Jobseekers.create(req.body))
 
    if (err) res.status(500).json(err)
-   else res.status(201).json(jobseekers)
+   else res.status(201).json({ created: `following jobseeker with id of ${jobseekers.id}`, jobseeker: req.body})
 })
 
 /**
@@ -58,10 +58,10 @@ router.put('/:id', async (req, res) => {
 **/
 
 router.delete('/:id', async (req, res) => {
-    const [err, data] = await withCatch (Jobseekers.remove(req.params.id))
+    const [err, count] = await withCatch (Jobseekers.remove(req.params.id))
     
     if (err) res.status(500).json(err)
-    else res.status(200).json({ deleted: `${data} jobseeker with the id of ${req.params.id}`})
+    else res.status(200).json({ deleted: `${count} jobseeker with the id of ${req.params.id}`})
 })
 
 module.exports = router;
