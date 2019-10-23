@@ -5,7 +5,7 @@ const Jobs = require('./jobs-model.js');
 const Companies = require('../company/company-model.js');
 
 /**
-*@api {get} /api/jobs
+*@api {get} /jobs
 *@apiName GetJobs
 *@apiGroup Jobs
 **/
@@ -29,7 +29,7 @@ router.get('/:company_id', (req, res) => {
 })
 
 /**
-*@api {post} /api/jobs
+*@api {post} /jobs
 *@apiName PostJobs
 *@apiGroup Jobs
 **/
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 })
 
 /**
-*@api {put} /api/jobs/:job_id
+*@api {put} /jobs/:job_id
 *@apiName PutJobs
 *@apiGroup Jobs
 *@apiParam {Number} id job's unique ID.
@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
     })
 })
 /**
-*@api {delete} /api/jobs/:job_id
+*@api {delete} /jobs/:job_id
 *@apiName DeleteJobs
 *@apiGroup Jobs
 **/
