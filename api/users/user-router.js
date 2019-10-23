@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../../secrets/secrets.js');
-const restricted = require('../../auth/restricted-middleware.js');
+const restricted = require('../../middleware/restricted-middleware.js');
 
 const Users = require('./user-model.js');
 
@@ -71,7 +71,8 @@ function generateToken(user) {
 
   const payload = { //key value store
     subject: user.id,
-    username: user.username
+    username: user.username,
+    role: user.role
   }
 
   const options = {

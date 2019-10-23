@@ -3,6 +3,7 @@ const router = express.Router();
 const withCatch = require('../../utils/withCatch.js');
 const isEmptyObj = require('../../utils/isEmptyObj.js');
 const Jobseekers = require('./jobseeker-model.js');
+const checkRole = require('../../middleware/check-department.js');
 
 
 /**
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
 *@apiGroup Jobseekers
 **/
 
-router.get('/', async (req, res) => {
+router.get('/', checkRole("company"), async (req, res) => {
 
     const [err, jobseekers] = await withCatch (Jobseekers.get())
 
