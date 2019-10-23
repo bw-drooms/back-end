@@ -3,6 +3,7 @@ const router = express.Router();
 const withCatch = require('../../utils/withCatch.js');
 const isEmptyObj = require('../../utils/isEmptyObj.js');
 const Jobseekers = require('./jobseeker-model.js');
+const checkRole = require('../../middleware/check-department.js');
 
 
 /**
@@ -25,13 +26,23 @@ router.post('/', async (req, res) => {
 *@apiGroup Jobseekers
 **/
 
-router.get('/', async (req, res) => {
+router.get('/', checkRole("company"), async (req, res) => {
 
     const [err, jobseekers] = await withCatch (Jobseekers.get())
 
     if (err) res.status(500).json(err)
     else if (err || isEmptyObj(jobseekers)) res.status(404).json({ error: "There are no jobseekers available yet."})
     else res.status(200).json(jobseekers)
+})
+
+router.get('/:jobseeker_id', async (req, res) => {
+
+    const [err, jobseeker] = await withCatch(Jobseekers.getById(req.params.jobseeker_id))
+        
+        if (err) res.status(500).json(err)
+        else if (err || isEmptyObj(jobseeker)) res.status(404).json({ error: "There is no jobseeker by this id"})
+        else res.status(200).json(jobseeker)
+
 })
 
 /**
