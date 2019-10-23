@@ -13,6 +13,7 @@ const Companies = require('../company/company-model.js');
 **/
 
 router.get('/', async (req, res) => {
+
     const [err, jobs] = await withCatch(Jobs.getJobs()) 
 
     if (err) res.status(500).json(err)
@@ -20,9 +21,16 @@ router.get('/', async (req, res) => {
     else res.status(200).json(jobs)
 })
 
-//get all jobs at a company by company id
+/**
+*@api {get} /jobs/:company_id
+*@apiName GetJobsByCompanyId
+*@apiGroup Jobs
+**/
+
 router.get('/:company_id', async (req, res) => {
+
     const [err, jobs] = await withCatch(Companies.getJobsById(req.params.company_id))
+
     if (err) res.status(500).json(err)
     else if (err || isEmptyObj(jobs)) res.status(404).json({ error: "There are no jobs available at this company yet."})
     else res.status(200).json(jobs)
@@ -36,6 +44,7 @@ router.get('/:company_id', async (req, res) => {
 **/
 
 router.post('/', async (req, res) => {
+
     const [err, job] = await withCatch(Jobs.create(req.body))
 
     if (err) res.status(500).json(err)
@@ -50,12 +59,13 @@ router.post('/', async (req, res) => {
 **/
 
 router.put('/:id', async (req, res) => {
+
     const [err, job] = await withCatch(Jobs.update(req.params.id, req.body)) 
-    const id = req.params.id;
 
     if (err) res.status(500).json(err)
     else res.status(200).json({ updated: `following job with id of ${job}`, newJob: req.body})
 })
+
 /**
 *@api {delete} /jobs/:job_id
 *@apiName DeleteJobs
@@ -63,6 +73,7 @@ router.put('/:id', async (req, res) => {
 **/
 
 router.delete('/:id', async (req, res) => {
+
     const [err, count] = await withCatch(Jobs.remove(req.params.id))
 
     if (err) res.status(500).json(err)

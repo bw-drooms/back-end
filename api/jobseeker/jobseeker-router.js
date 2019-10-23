@@ -12,6 +12,7 @@ const Jobseekers = require('./jobseeker-model.js');
 **/
 
 router.post('/', async (req, res) => {
+    
    const [err, jobseekers] = await withCatch (Jobseekers.create(req.body))
 
    if (err) res.status(500).json(err)
@@ -25,6 +26,7 @@ router.post('/', async (req, res) => {
 **/
 
 router.get('/', async (req, res) => {
+
     const [err, jobseekers] = await withCatch (Jobseekers.get())
 
     if (err) res.status(500).json(err)
@@ -44,7 +46,7 @@ router.put('/:id', async (req, res) => {
     const changes = req.body;
 
     const [err, jobseeker] = await withCatch (Jobseekers.update(req.params.id, changes))
-    console.log(err, jobseeker)
+
     if (err) res.status(500).json({message: "there was a problem with the request", err})
     else if (err || isEmptyObj(jobseeker)) res.status(404).json({ error: "There is no jobseeker available yet."})
     else res.status(200).json(jobseeker)
@@ -58,6 +60,7 @@ router.put('/:id', async (req, res) => {
 **/
 
 router.delete('/:id', async (req, res) => {
+
     const [err, count] = await withCatch (Jobseekers.remove(req.params.id))
     
     if (err) res.status(500).json(err)
