@@ -57,14 +57,11 @@ router.put('/:id', async (req, res) => {
 *@apiGroup Jobseekers
 **/
 
-router.delete('/:id', (req, res) => {
-    const id = req.params.id
-    Jobseekers.remove(id).then(deleted => {
-        res.status(200).json({ deleted: `member of id ${id}`})
-    })
-    .catch(err => {
-        res.status(400).json(err)
-    })
+router.delete('/:id', async (req, res) => {
+    const [err, data] = await withCatch (Jobseekers.remove(req.params.id))
+    
+    if (err) res.status(500).json(err)
+    else res.status(200).json({ deleted: `${data} jobseeker with the id of ${req.params.id}`})
 })
 
 module.exports = router;
