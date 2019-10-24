@@ -8,10 +8,10 @@ module.exports = (req, res, next) => {
   if(token) {
   jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
     if(err) {
-      //foul play
-      res.status(401).json({ message: 'Bad panda!' });
+
+      res.status(401).json({ message: 'Access denied.' });
     }else {
-      //token is goooood
+     
       req.user = {
         username: decodedToken.username,
         role: decodedToken.role,

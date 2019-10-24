@@ -9,6 +9,13 @@ exports.up = function(knex) {
           .notNullable()
       user.string('email')
       user.string('role')
+      user.string('jobseeker_name')
+      user.string('location')
+      user.string('general_profession')
+      user.string('description')
+      user.string('linkedIn')
+      user.boolean('selected')
+        .defaultTo(false)
     })
   };
   
