@@ -17,25 +17,25 @@ function create(jobseeker) {
   }
 
 function get() {
-    return db('jobseeker')
+    return db('users')
 }
 
 
 function getById(id) {
-    return db('jobseeker')
+    return db('users')
       .where({ id })
       .first();
   }
 
 function update(id, changes) {
-    return db('jobseeker')
+    return db('users')
       .where({ id })
       .update(changes)
       .then(ids => ({ id: ids[0], changes}));
   }
 
 function remove(id) {
-  return db('jobseeker')
+  return db('users')
     .where({ id })
     .delete()
 }
