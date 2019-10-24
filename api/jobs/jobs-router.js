@@ -61,9 +61,9 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
 
     const [err, job] = await withCatch(Jobs.update(req.params.id, req.body)) 
-
+   
     if (err) res.status(500).json(err)
-    else res.status(200).json({ updated: `following job with id of ${job}`, newJob: req.body})
+    else res.status(200).json({ updated: `following job with id of ${req.params.id}`, newJob: req.body})
 })
 
 /**

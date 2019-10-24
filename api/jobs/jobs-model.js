@@ -34,10 +34,9 @@ function getJobsById(company_id) {
 }
 
   function update(id, changes) {
-    return db('jobseeker')
+    return db('company')
       .where({ id })
       .update(changes)
-      .then(ids => ({ id: ids[0], changes}));
   }
 
   function remove(id) {
